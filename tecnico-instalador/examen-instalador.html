@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Examen: Técnico Instalador · Enlace Networks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0b2847;--navy2:#13395f;--teal:#17b0c4;--gold:#f2b705;--card:#ffffff;--bg:#eef3f8;--border:#dbe4ee;--muted:#5b6b7c;--text:#16222f;}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);font-family:Inter,system-ui,sans-serif;color:var(--text);padding:16px;}
+.wrap{max-width:720px;margin:0 auto;}
+.hero{background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:18px;padding:22px 24px;color:#fff;display:flex;align-items:center;gap:14px;box-shadow:0 8px 24px rgba(11,40,71,0.25);}
+.hero .tag{font-size:11px;letter-spacing:1.5px;font-weight:800;color:var(--gold);text-transform:uppercase;}
+.hero h1{font-size:19px;margin:2px 0 0;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:22px 24px;margin-top:18px;box-shadow:0 1px 2px rgba(16,24,40,0.04),0 8px 24px rgba(16,24,40,0.06);}
+.hidden{display:none !important;}
+label{display:block;font-weight:700;font-size:13.5px;margin:14px 0 6px;}
+input[type=text]{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:10px;font-size:15px;font-family:inherit;}
+.btn{display:inline-block;background:var(--teal);color:#fff;border:none;padding:13px 20px;border-radius:10px;font-weight:800;font-size:15px;cursor:pointer;width:100%;text-align:center;margin-top:16px;}
+.btn.secondary{background:transparent;border:1.5px solid var(--teal);color:var(--teal);}
+.btn:disabled{opacity:.5;}
+.qcount{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.5px;text-transform:uppercase;}
+.qtext{font-size:17px;font-weight:800;margin:10px 0 16px;}
+.opt{display:block;width:100%;text-align:left;background:#f4f8fb;border:1.5px solid var(--border);border-radius:12px;padding:13px 16px;margin-bottom:10px;font-size:14.5px;font-weight:600;cursor:pointer;}
+.opt:hover{border-color:var(--teal);}
+.opt.correct{background:#e3f8ea;border-color:#22a35a;}
+.opt.wrong{background:#fde8e8;border-color:#d64545;}
+.feedback{margin-top:14px;padding:12px 14px;border-radius:10px;font-size:13.5px;background:#eef6fb;border:1px solid var(--border);}
+.progress{height:6px;background:var(--border);border-radius:4px;overflow:hidden;margin-bottom:14px;}
+.progress div{height:100%;background:var(--teal);}
+.cert{background:linear-gradient(160deg,var(--navy),var(--navy2));border-radius:18px;padding:28px 24px;color:#fff;text-align:center;}
+.cert .badge{display:inline-block;background:var(--gold);color:var(--navy);font-weight:800;padding:5px 16px;border-radius:20px;font-size:12px;margin-bottom:14px;}
+.cert h2{font-family:'Playfair Display',serif;font-size:26px;margin:4px 0;}
+.cert .name{font-family:'Playfair Display',serif;font-size:24px;font-weight:800;margin:14px 0 2px;}
+.cert .cc{opacity:.75;font-size:13px;}
+.cert .mod{color:var(--gold);font-weight:800;font-size:16px;margin-top:10px;}
+.topics-box{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:14px;margin:18px 0;text-align:left;font-size:12.5px;line-height:1.7;}
+.topics-box b{display:block;text-align:center;letter-spacing:1px;font-size:11px;color:var(--gold);margin-bottom:8px;}
+.meta-row{display:flex;justify-content:space-between;font-size:11.5px;opacity:.75;margin-top:16px;}
+.sig{margin-top:18px;border-top:1px solid rgba(255,255,255,0.2);padding-top:12px;}
+.sig b{font-size:14px;}
+.legal{font-size:10.5px;opacity:.6;margin-top:16px;line-height:1.5;}
+.fail-box{text-align:center;}
+.fail-box .icon{font-size:44px;}
+footer{text-align:center;font-size:12px;color:var(--muted);margin-top:22px;padding-bottom:10px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <div class="tag">Enlace Networks SAS · Guatapé</div>
+      <h1>Examen · Técnico Instalador</h1>
+    </div>
+  </div>
+
+  <div class="card" id="screen-start">
+    <p>Antes de empezar, escriba su nombre completo. Son <b>14 preguntas</b> sobre cables, equipos, fibra óptica, empalmes, infraestructura externa, WispHub/SmartOLT, instalación en campo y protocolo de atención. Necesita al menos <b>80%</b> para ganar la medalla.</p>
+    <label>Nombre completo</label>
+    <input type="text" id="inName" placeholder="Su nombre completo">
+    <label>Cédula de ciudadanía</label>
+    <input type="text" id="inCC" placeholder="Número de cédula, sin puntos">
+    <button class="btn" id="btnStart">Comenzar examen →</button>
+  </div>
+
+  <div class="card hidden" id="screen-quiz">
+    <div class="progress"><div id="progBar" style="width:0%"></div></div>
+    <div class="qcount" id="qcount">Pregunta 1 de 14 · <span id="attemptLabel">Intento 1</span></div>
+    <div class="qtext" id="qtext"></div>
+    <div id="opts"></div>
+    <div class="feedback hidden" id="feedback"></div>
+    <button class="btn hidden" id="btnNext">Siguiente →</button>
+  </div>
+
+  <div class="card hidden" id="screen-result">
+    <div id="resultPass" class="hidden">
+      <div class="cert" id="certBox">
+        <div class="badge" id="certLevel">APROBADO</div>
+        <div style="font-size:11px;letter-spacing:1.5px;opacity:.75;">ENLACE NETWORKS SAS · GUATAPÉ</div>
+        <h2>Certificado de<br>Aprobación</h2>
+        <div style="font-size:12px;opacity:.75;margin-top:10px;">Se certifica que</div>
+        <div class="name" id="certName"></div>
+        <div class="cc" id="certCC"></div>
+        <div style="font-size:12.5px;margin-top:10px;">completó y aprobó satisfactoriamente la capacitación</div>
+        <div class="mod">Técnico Instalador</div>
+        <div id="certScore" style="margin-top:4px;font-size:13px;"></div>
+        <div class="topics-box">
+          <b>TEMAS CUBIERTOS</b>
+          <div id="topicsGrid"></div>
+        </div>
+        <div class="meta-row">
+          <div>FECHA<br><b id="certDate" style="color:#fff;"></b></div>
+          <div>FOLIO<br><b id="certFolio" style="color:#fff;"></b></div>
+        </div>
+        <div class="sig">
+          <b>Cindy Paola Zapata Arcila</b><br>
+          <span style="font-size:11.5px;opacity:.75;">Gerente General · Enlace Networks SAS</span>
+        </div>
+        <div class="legal">Esta es una constancia de educación informal, expedida conforme al artículo 43 de la Ley 115 de 1994 y al artículo 2.6.6.8 del Decreto 1075 de 2015. No requiere registro ante la Secretaría de Educación y no equivale a título ni a certificado de aptitud ocupacional.</div>
+      </div>
+      <button class="btn" id="btnDownload">↓ Descargar certificado</button>
+      <button class="btn secondary" id="btnWhatsapp">Enviar por WhatsApp</button>
+    </div>
+    <div id="resultFail" class="hidden fail-box">
+      <div class="icon">📘</div>
+      <h2 id="failTitle">Casi, pero todavía no</h2>
+      <p id="failMsg"></p>
+      <button class="btn" id="btnRetry">Intentar de nuevo →</button>
+    </div>
+  </div>
+  <footer>Enlace Networks SAS · Capacitación técnica interna · Guatapé, Antioquia</footer>
+</div>
+
+<canvas id="certCanvas" width="1000" height="1180" style="display:none;"></canvas>
+
+<script>
+const QUESTION_POOL = [[{"q": "¿Qué cuidado especial requiere el cable de fibra (drop/acometida)?", "opts": ["No doblarlo en ángulo cerrado ni pisarlo, porque se puede partir", "Se puede doblar como cualquier cable eléctrico", "Hay que mojarlo antes de instalarlo"], "correct": 0, "tema": "Cables y materiales", "recuerda": "la fibra es de vidrio: un doblez muy cerrado la puede partir o dañar la señal."}, {"q": "¿Para qué se deja siempre una reserva de fibra enrollada en el punto de entrada?", "opts": ["Para poder reparar o mover el equipo después sin tender cable nuevo", "Porque se ve más ordenado", "Porque así lo pide el cliente siempre"], "correct": 0, "tema": "Cables y materiales", "recuerda": "la reserva enrollada permite trabajar después sin volver a tender fibra desde la caja NAP."}], [{"q": "¿Por qué se usa canaleta en los tramos de cable visibles?", "opts": ["Para proteger el cable del sol, la lluvia y los golpes", "Solo por estética", "Porque mejora la velocidad del internet"], "correct": 0, "tema": "Cables y materiales", "recuerda": "la canaleta protege físicamente el cable en los tramos expuestos a la intemperie."}, {"q": "¿Qué pasa si se usa alambre improvisado en vez del herraje adecuado para fijar el cable?", "opts": ["El cable puede quedar mal sujeto y dañarse con el tiempo", "No hay ninguna diferencia", "Mejora la señal"], "correct": 0, "tema": "Cables y materiales", "recuerda": "usar el herraje correcto evita que el cable se suelte, se tense mal o se dañe."}], [{"q": "¿Qué hace el ONT en la instalación de un cliente?", "opts": ["Recibe la fibra y convierte la luz en internet digital", "Reparte el Wi-Fi por toda la casa", "Amplifica la señal en habitaciones lejanas"], "correct": 0, "tema": "Equipos", "recuerda": "el ONT es la puerta de entrada: convierte los pulsos de luz de la fibra en señal digital."}, {"q": "¿Cuándo conviene instalar un repetidor en la casa del cliente?", "opts": ["Cuando la casa es grande o tiene muchas paredes y el Wi-Fi no llega bien", "Siempre, en toda instalación", "Nunca, no sirve para nada"], "correct": 0, "tema": "Equipos", "recuerda": "el repetidor amplifica la señal del router para que llegue a zonas lejanas de la casa."}], [{"q": "Al terminar una instalación, ¿qué se debe hacer antes de irse de la casa?", "opts": ["Probar el Wi-Fi caminando con el cliente y ayudarlo a conectar sus dispositivos", "Irse apenas el router prende, sin probar nada más", "Dejar que el cliente configure todo solo"], "correct": 0, "tema": "Equipos", "recuerda": "no se deja al cliente con la tarea de conectar sus propios equipos — se le ayuda antes de salir."}, {"q": "Según el estándar de Enlace, ¿qué debe quedar activo en el router del cliente?", "opts": ["El acceso remoto, para poder entrar por la IP del cliente en soporte futuro", "Nada en especial, solo el Wi-Fi", "Solo el acceso físico, nunca remoto"], "correct": 0, "tema": "Equipos", "recuerda": "el acceso remoto activo permite dar soporte sin tener que volver a la casa del cliente."}], [{"q": "¿Por qué los valores de potencia óptica (dBm) casi siempre son negativos?", "opts": ["Porque miden cuánta potencia queda después de que la señal pierde energía en el camino", "Porque la fibra nunca tiene buena señal", "Porque así lo decidió el fabricante del equipo, sin ninguna razón técnica"], "correct": 0, "tema": "Fibra y dBm", "recuerda": "no se mide cuánta luz produce el sistema, sino cuánta queda tras recorrer la fibra: por eso el número es negativo."}, {"q": "¿Qué significa que la potencia óptica de un cliente esté en zona 🟢 óptima?", "opts": ["Que la señal llega fuerte, con buena reserva", "Que la fibra está cortada", "Que el servicio está suspendido"], "correct": 0, "tema": "Fibra y dBm", "recuerda": "la zona óptima es la que da margen y estabilidad al servicio del cliente."}], [{"q": "¿Qué puede causar que la potencia óptica baje (se vuelva más negativa) en un cliente?", "opts": ["Distancia, empalmes, conectores sucios o curvaturas muy cerradas en el cable", "Que el cliente vea mucho YouTube", "Que llueva en la ciudad donde está el Data Center"], "correct": 0, "tema": "Fibra y dBm", "recuerda": "cada tramo, empalme o curvatura 'le roba' un poco de energía a la señal óptica."}, {"q": "¿Qué pasa si la potencia óptica llega demasiado débil al ONT?", "opts": ["El equipo puede fallar al leer los datos, causando cortes o intermitencia", "El internet se vuelve más rápido", "No pasa nada, es solo un número"], "correct": 0, "tema": "Fibra y dBm", "recuerda": "con señal muy débil, el ONT ya no distingue bien los pulsos de luz y el servicio falla."}], [{"q": "¿Con qué se corta la fibra antes de hacer un empalme?", "opts": ["Con un cortador de precisión (cleaver), nunca con tijeras o cuchillo", "Con cualquier tijera que se tenga a mano", "No hace falta cortarla, se fusiona completa"], "correct": 0, "tema": "Fusión y empalmes", "recuerda": "un corte torcido arruina el empalme — por eso se usa siempre un cortador de precisión."}, {"q": "¿Qué se hace con las puntas de fibra antes de fusionarlas?", "opts": ["Se limpian con alcohol isopropílico y un paño sin pelusa", "Se dejan tal como están, sin limpiar", "Se mojan con agua"], "correct": 0, "tema": "Fusión y empalmes", "recuerda": "cualquier polvo o grasa en la punta queda 'soldado' dentro del empalme si no se limpia antes."}], [{"q": "¿Qué protege un empalme ya fusionado?", "opts": ["Una manga térmica que se calienta para sellarlo", "Ninguna protección, se deja expuesto", "Solo cinta aislante"], "correct": 0, "tema": "Fusión y empalmes", "recuerda": "la manga térmica sella y protege físicamente el punto donde se unieron los dos hilos de fibra."}, {"q": "¿Dónde debe quedar guardado todo empalme?", "opts": ["Dentro de una caja de empalme (NAP o terminal), nunca suelto o expuesto", "Colgando libremente del poste", "Enterrado sin protección"], "correct": 0, "tema": "Fusión y empalmes", "recuerda": "un empalme expuesto a la intemperie se daña con el tiempo y afecta la señal del cliente."}], [{"q": "¿Cómo debe quedar la tensión del cable tendido entre postes?", "opts": ["Ni muy flojo ni muy tenso — equilibrado para evitar enredos o roturas", "Lo más apretado posible siempre", "Lo más flojo posible siempre"], "correct": 0, "tema": "Infraestructura externa", "recuerda": "un cable muy tenso se puede partir con viento o dilatación; uno muy flojo se puede enredar o jalar."}, {"q": "¿Cómo deben quedar las cajas NAP después de trabajar en ellas?", "opts": ["Bien cerradas y organizadas, con cada hilo identificado", "Abiertas, para revisar más rápido la próxima vez", "Con los empalmes sueltos colgando dentro"], "correct": 0, "tema": "Infraestructura externa", "recuerda": "una caja NAP desordenada complica el trabajo futuro y puede causar fallas a otros clientes del mismo sector."}], [{"q": "Antes de salir a una visita o dar un diagnóstico, ¿qué se revisa primero en WispHub?", "opts": ["Si el cliente está Activo o Suspendido, y si hay tickets pendientes", "El clima de la zona", "El número de cédula del técnico"], "correct": 0, "tema": "WispHub y SmartOLT", "recuerda": "WispHub dice el estado del cliente y si ya hay algo reportado antes de ir a campo."}, {"q": "¿Para qué se usa SmartOLT en campo?", "opts": ["Para consultar el estado de la ONT y medir la potencia óptica en dBm", "Para facturar al cliente", "Para programar visitas en el calendario"], "correct": 0, "tema": "WispHub y SmartOLT", "recuerda": "SmartOLT muestra el estado técnico real de la ONT, incluida la potencia óptica."}], [{"q": "Si SmartOLT muestra una falla rara, ¿qué conviene hacer antes de reportarla?", "opts": ["Refrescar la página, para descartar un falso negativo", "Reportarla de inmediato sin revisar de nuevo", "Ignorarla, seguramente se arregla sola"], "correct": 0, "tema": "WispHub y SmartOLT", "recuerda": "un refresco descarta errores momentáneos antes de dar un diagnóstico equivocado."}, {"q": "¿Para qué sirve OZMap / los planos en una visita de campo?", "opts": ["Para ubicar la caja NAP del sector y saber si la falla es de un cliente o de todo el barrio", "Para ver el clima", "Para calcular la factura del cliente"], "correct": 0, "tema": "WispHub y SmartOLT", "recuerda": "los planos ayudan a diferenciar una falla puntual de una falla que afecta a todo un sector."}], [{"q": "¿Qué se debe explicar al cliente al elegir el punto de entrada de la fibra a la vivienda?", "opts": ["Por qué ese punto es el mejor (cercanía a la NAP, protección del cable)", "No hace falta explicarle nada, se decide solo", "Que ese punto lo va a decidir él sin ninguna recomendación técnica"], "correct": 0, "tema": "Instalación en campo", "recuerda": "explicarle al cliente genera confianza y evita reclamos después sobre dónde quedó el cable."}, {"q": "Después de instalar el ONT y conectar el router, ¿qué se hace con el cliente presente?", "opts": ["Caminar la casa probando el Wi-Fi y decirle con claridad hasta dónde llega bien", "Irse de inmediato sin probar nada", "Dejar que el cliente pruebe solo, días después"], "correct": 0, "tema": "Instalación en campo", "recuerda": "probar la señal con el cliente presente evita visitas de soporte innecesarias después."}], [{"q": "¿Qué dato debe llevar la credencial PPPoE del cliente, según el estándar de Enlace?", "opts": ["El nombre de la persona más el serial (número) de su equipo/ONU", "Solo un número aleatorio", "El nombre del técnico que hizo la instalación"], "correct": 0, "tema": "Instalación en campo", "recuerda": "ese estándar permite identificar rápido de quién es cada conexión en el sistema."}, {"q": "Al terminar la instalación, ¿qué se le debe dejar claro al cliente?", "opts": ["Qué quedó instalado y un contacto claro por si algo falla", "Nada, se asume que ya entendió todo", "Solo el precio del plan contratado"], "correct": 0, "tema": "Instalación en campo", "recuerda": "una buena instalación termina con el cliente informado, no solo con el equipo encendido."}], [{"q": "¿Qué va en el Bloque Azul de una respuesta a un caso?", "opts": ["El diagnóstico técnico interno: qué se revisó en los sistemas y qué acción se tomó", "El mensaje que se le manda al cliente por LiveConnect", "Nada, ese bloque no se usa para técnicos"], "correct": 0, "tema": "Protocolo de atención", "recuerda": "el Bloque Azul es información interna, con los datos técnicos reales (dBm, sistemas revisados, etc.)."}, {"q": "¿Cómo debe sonar el Bloque Verde que se le manda al cliente?", "opts": ["Amable, con analogías simples y sin tecnicismos ni números de dBm", "Igual de técnico que el Bloque Azul, con todos los números", "Cortante y sin explicación"], "correct": 0, "tema": "Protocolo de atención", "recuerda": "el cliente no necesita los números técnicos, necesita entender qué pasa y sentirse atendido."}]];
+const TOPICS_COVERED = ["Cables y materiales", "Equipos", "Fibra y dBm", "Fusión y empalmes", "Infraestructura externa", "WispHub y SmartOLT", "Instalación en campo", "Protocolo de atención"];
+const LOGO_B64 = "";
+const STORAGE_KEY = "enlace_tecnicoinstalador_intentos";
+
+let QUESTIONS = [];
+let current = 0, score = 0, selections = [];
+let userName = "", userCC = "";
+
+function pickQuestions(){ return QUESTION_POOL.map(slot => slot[Math.floor(Math.random()*slot.length)]); }
+function getAttemptCount(){ return parseInt(localStorage.getItem(STORAGE_KEY) || "0", 10); }
+function bumpAttemptCount(){ const n = getAttemptCount()+1; localStorage.setItem(STORAGE_KEY, String(n)); return n; }
+
+document.getElementById("btnStart").onclick = () => {
+  userName = document.getElementById("inName").value.trim();
+  userCC = document.getElementById("inCC").value.trim();
+  if(!userName || !userCC){ alert("Por favor completa nombre y cédula."); return; }
+  QUESTIONS = pickQuestions();
+  current = 0; score = 0; selections = [];
+  document.getElementById("screen-start").classList.add("hidden");
+  document.getElementById("screen-quiz").classList.remove("hidden");
+  renderQuestion();
+};
+
+function renderQuestion(){
+  const q = QUESTIONS[current];
+  document.getElementById("progBar").style.width = ((current)/QUESTIONS.length*100)+"%";
+  document.getElementById("qcount").innerHTML = `Pregunta ${current+1} de ${QUESTIONS.length} · <span>Intento ${getAttemptCount()+1}</span>`;
+  document.getElementById("qtext").textContent = q.q;
+  const optsDiv = document.getElementById("opts");
+  optsDiv.innerHTML = "";
+  document.getElementById("feedback").classList.add("hidden");
+  document.getElementById("btnNext").classList.add("hidden");
+  q.opts.forEach((opt, i) => {
+    const b = document.createElement("button");
+    b.className = "opt"; b.textContent = opt;
+    b.onclick = () => selectOption(i);
+    optsDiv.appendChild(b);
+  });
+}
+
+function selectOption(i){
+  const q = QUESTIONS[current];
+  const buttons = document.querySelectorAll("#opts .opt");
+  buttons.forEach(b => b.onclick = null);
+  buttons[q.correct].classList.add("correct");
+  if(i !== q.correct){ buttons[i].classList.add("wrong"); }
+  else { score++; }
+  const fb = document.getElementById("feedback");
+  fb.classList.remove("hidden");
+  fb.innerHTML = (i===q.correct ? "✅ ¡Correcto! " : "❌ ") + "<b>Recuerda que:</b> " + q.recuerda;
+  document.getElementById("btnNext").classList.remove("hidden");
+}
+
+document.getElementById("btnNext").onclick = () => {
+  current++;
+  if(current < QUESTIONS.length){ renderQuestion(); }
+  else { finishExam(); }
+};
+
+function finishExam(){
+  document.getElementById("screen-quiz").classList.add("hidden");
+  document.getElementById("screen-result").classList.remove("hidden");
+  const pct = score/QUESTIONS.length;
+  const attemptCount = bumpAttemptCount();
+  if(pct >= 0.8){
+    document.getElementById("resultPass").classList.remove("hidden");
+    renderCert(pct, attemptCount);
+  } else {
+    document.getElementById("resultFail").classList.remove("hidden");
+    const msg = document.getElementById("failMsg");
+    const needed = Math.ceil(QUESTIONS.length*0.8);
+    msg.textContent = `Obtuvo ${score} de ${QUESTIONS.length} correctas. Necesita al menos ${needed} para aprobar.`;
+    if(attemptCount >= 3){
+      msg.textContent += " Este fue su 3er intento sin aprobar — le recomendamos repasar en persona con el instructor antes de volver a intentarlo.";
+    }
+  }
+}
+
+document.getElementById("btnRetry").onclick = () => {
+  document.getElementById("screen-result").classList.add("hidden");
+  document.getElementById("resultFail").classList.add("hidden");
+  document.getElementById("screen-start").classList.remove("hidden");
+};
+
+function genFolio(){
+  const d = new Date();
+  const yyyymmdd = d.getFullYear().toString() + String(d.getMonth()+1).padStart(2,"0") + String(d.getDate()).padStart(2,"0");
+  const ccTail = userCC.slice(-4).padStart(4,"0");
+  return `TI-${yyyymmdd}-${ccTail}`;
+}
+
+function renderCert(pct, attemptCount){
+  const level = pct >= 0.95 ? "EXCELENCIA" : pct >= 0.87 ? "DESTACADO" : "APROBADO";
+  document.getElementById("certLevel").textContent = level;
+  document.getElementById("certName").textContent = userName;
+  document.getElementById("certCC").textContent = "C.C. " + userCC;
+  document.getElementById("certScore").textContent = `${score} de ${QUESTIONS.length} correctas (${Math.round(pct*100)}%)`;
+  const grid = document.getElementById("topicsGrid");
+  grid.innerHTML = TOPICS_COVERED.map(t => "✓ "+t).join("  ");
+  document.getElementById("certDate").textContent = new Date().toLocaleDateString("es-CO", {year:"numeric",month:"short",day:"numeric"});
+  document.getElementById("certFolio").textContent = genFolio();
+}
+
+document.getElementById("btnDownload").onclick = () => {
+  drawCertCanvas(() => {
+    const canvas = document.getElementById("certCanvas");
+    const link = document.createElement("a");
+    link.download = `Certificado_TecnicoInstalador_${userName.replace(/\s+/g,"_")}_CC${userCC}.png`;
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+  });
+};
+
+document.getElementById("btnWhatsapp").onclick = () => {
+  const pct = Math.round(score/QUESTIONS.length*100);
+  const msg = `Examen Tecnico Instalador - Enlace Networks\nNombre: ${userName}\nCedula: ${userCC}\nResultado: ${score}/${QUESTIONS.length} (${pct}%) - APROBADO\nFecha: ${new Date().toLocaleDateString("es-CO")}`;
+  window.open("https://wa.me/573134305035?text=" + encodeURIComponent(msg), "_blank");
+};
+
+function wrapText(ctx, text, x, y, maxWidth, lineHeight){
+  const words = text.split(" ");
+  let line = "", ly = y;
+  for(let n=0;n<words.length;n++){
+    const test = line + words[n] + " ";
+    if(ctx.measureText(test).width > maxWidth && n > 0){
+      ctx.fillText(line, x, ly); line = words[n] + " "; ly += lineHeight;
+    } else { line = test; }
+  }
+  ctx.fillText(line, x, ly);
+  return ly;
+}
+
+function roundRect(ctx,x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r);
+  ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath();
+}
+
+function drawCertCanvas(done){
+  const canvas = document.getElementById("certCanvas");
+  const ctx = canvas.getContext("2d");
+  const w = 1000, h = 1180;
+  const grad = ctx.createLinearGradient(0,0,w,h);
+  grad.addColorStop(0,"#0b2847"); grad.addColorStop(1,"#13395f");
+  ctx.fillStyle = grad; ctx.fillRect(0,0,w,h);
+  ctx.strokeStyle = "rgba(255,255,255,0.3)"; ctx.lineWidth = 2;
+  roundRect(ctx,18,18,w-36,h-36,16); ctx.stroke();
+
+  ctx.textAlign = "center";
+  ctx.fillStyle = "#f2b705";
+  ctx.font = "bold 16px Inter"; ctx.fillText(document.getElementById("certLevel").textContent, w/2, 110);
+  ctx.fillStyle = "rgba(255,255,255,0.8)";
+  ctx.font = "600 13px Inter"; ctx.fillText("ENLACE NETWORKS SAS · GUATAPÉ", w/2, 170);
+  ctx.fillStyle = "#fff";
+  ctx.font = "800 42px 'Playfair Display', serif";
+  ctx.fillText("Certificado de Aprobación", w/2, 230);
+  ctx.font = "italic 15px Inter"; ctx.fillStyle = "rgba(255,255,255,0.75)";
+  ctx.fillText("Se certifica que", w/2, 300);
+  ctx.font = "800 36px 'Playfair Display', serif"; ctx.fillStyle = "#fff";
+  ctx.fillText(userName, w/2, 345);
+  ctx.font = "600 15px Inter"; ctx.fillStyle = "rgba(255,255,255,0.7)";
+  ctx.fillText("C.C. " + userCC, w/2, 375);
+  ctx.font = "15px Inter"; ctx.fillStyle = "rgba(255,255,255,0.85)";
+  ctx.fillText("completó y aprobó satisfactoriamente la capacitación", w/2, 410);
+  ctx.font = "800 24px Inter"; ctx.fillStyle = "#f2b705";
+  ctx.fillText("Técnico Instalador", w/2, 445);
+  ctx.font = "15px Inter"; ctx.fillStyle = "rgba(255,255,255,0.85)";
+  ctx.fillText(document.getElementById("certScore").textContent, w/2, 470);
+
+  const boxX = 90, boxY = 500, boxW = w-180, boxH = 260;
+  ctx.fillStyle = "rgba(255,255,255,0.06)";
+  roundRect(ctx, boxX, boxY, boxW, boxH, 14); ctx.fill();
+  ctx.strokeStyle = "rgba(255,255,255,0.15)"; ctx.lineWidth=1;
+  roundRect(ctx, boxX, boxY, boxW, boxH, 14); ctx.stroke();
+  ctx.fillStyle = "#f2b705"; ctx.font="bold 12px Inter";
+  ctx.fillText("TEMAS CUBIERTOS", w/2, boxY+32);
+  ctx.fillStyle = "rgba(255,255,255,0.85)"; ctx.font="13px Inter"; ctx.textAlign="left";
+  let ty = boxY+60;
+  TOPICS_COVERED.forEach((t,i) => {
+    const col = i % 2; const row = Math.floor(i/2);
+    const tx = boxX+20 + col*(boxW/2-10);
+    ty = boxY+60 + row*26;
+    ctx.fillText("✓ "+t, tx, ty);
+  });
+  ctx.textAlign = "center";
+
+  const metaY = boxY+boxH+40;
+  ctx.font="11px Inter"; ctx.fillStyle="rgba(255,255,255,0.6)";
+  ctx.fillText("FECHA", w/2-150, metaY);
+  ctx.fillText("FOLIO", w/2+150, metaY);
+  ctx.font="bold 14px Inter"; ctx.fillStyle="#fff";
+  ctx.fillText(document.getElementById("certDate").textContent, w/2-150, metaY+22);
+  ctx.fillText(document.getElementById("certFolio").textContent, w/2+150, metaY+22);
+
+  const sigY = metaY+56;
+  ctx.strokeStyle="rgba(255,255,255,0.2)"; ctx.beginPath();
+  ctx.moveTo(w/2-150,sigY-20); ctx.lineTo(w/2+150,sigY-20); ctx.stroke();
+  ctx.font="bold 16px Inter"; ctx.fillStyle="#fff";
+  ctx.fillText("Cindy Paola Zapata Arcila", w/2, sigY);
+  ctx.font="12px Inter"; ctx.fillStyle="rgba(255,255,255,0.7)";
+  ctx.fillText("Gerente General · Enlace Networks SAS", w/2, sigY+20);
+
+  ctx.font="10px Inter"; ctx.fillStyle="rgba(255,255,255,0.55)";
+  wrapText(ctx, "Esta es una constancia de educación informal, expedida conforme al artículo 43 de la Ley 115 de 1994 y al artículo 2.6.6.8 del Decreto 1075 de 2015. No requiere registro ante la Secretaría de Educación y no equivale a título ni a certificado de aptitud ocupacional.", w/2, sigY+56, w-160, 15);
+
+  if(LOGO_B64){
+    const logo = new Image();
+    logo.onload = () => {
+      const lw = 140, lh = lw*(logo.height/logo.width);
+      ctx.drawImage(logo, w/2-lw/2, 60, lw, lh);
+      done();
+    };
+    logo.src = "data:image/png;base64," + LOGO_B64;
+  } else {
+    done();
+  }
+}
+</script>
+</body>
+</html>

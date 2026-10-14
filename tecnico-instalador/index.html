@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Técnico Instalador · Enlace Networks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0b2847;--navy2:#13395f;--teal:#17b0c4;--gold:#f2b705;--card:#ffffff;--bg:#eef3f8;--border:#dbe4ee;--muted:#5b6b7c;--text:#16222f;}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);font-family:Inter,system-ui,sans-serif;color:var(--text);padding:16px;}
+.wrap{max-width:860px;margin:0 auto;}
+.hero{background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:18px;padding:26px 24px;color:#fff;box-shadow:0 8px 24px rgba(11,40,71,0.25);}
+.hero .tag{font-size:11px;letter-spacing:1.5px;font-weight:800;color:var(--gold);text-transform:uppercase;}
+.hero h1{font-family:'Playfair Display',serif;font-size:28px;margin:6px 0 8px;}
+.hero p{font-size:14px;opacity:.85;margin:0;line-height:1.5;}
+nav.index{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin-top:18px;}
+nav.index b{font-size:11px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;}
+nav.index ol{margin:10px 0 0;padding-left:20px;font-size:14px;line-height:2;}
+nav.index a{color:var(--navy2);text-decoration:none;font-weight:700;}
+nav.index a:hover{color:var(--teal);}
+section.card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:22px 24px;margin-top:18px;box-shadow:0 1px 2px rgba(16,24,40,0.04),0 8px 24px rgba(16,24,40,0.06);scroll-margin-top:16px;}
+section.card .modtag{font-size:11px;letter-spacing:1.5px;font-weight:800;color:var(--teal);text-transform:uppercase;}
+section.card h2{font-family:'Playfair Display',serif;font-size:22px;margin:4px 0 14px;color:var(--navy);}
+section.card h3{font-size:15px;margin:18px 0 6px;color:var(--navy2);}
+section.card p{font-size:14.5px;line-height:1.65;margin:6px 0;}
+section.card ul{font-size:14.5px;line-height:1.7;padding-left:20px;}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0;}
+@media (max-width:600px){.grid2{grid-template-columns:1fr;}}
+.box{background:#f4f8fb;border:1px solid var(--border);border-radius:12px;padding:14px 16px;}
+.box b{display:block;font-size:13.5px;margin-bottom:4px;color:var(--navy2);}
+.box p{margin:0;font-size:13.5px;}
+.chuleta{background:linear-gradient(160deg,var(--navy),var(--navy2));color:#fff;border-radius:14px;padding:16px 18px;margin-top:16px;}
+.chuleta b{display:block;color:var(--gold);font-size:12px;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;}
+.chuleta p{margin:0;font-size:13.5px;line-height:1.6;color:#fff;}
+.dbm-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px;}
+.dbm-table th,.dbm-table td{border:1px solid var(--border);padding:8px 10px;text-align:left;}
+.dbm-table th{background:#f4f8fb;}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;}
+.bloque{border-radius:14px;padding:16px 18px;margin:10px 0;}
+.bloque.azul{background:#eaf6fb;border:1.5px solid #17b0c4;}
+.bloque.verde{background:#eafbf0;border:1.5px solid #22a35a;}
+.bloque b{display:block;margin-bottom:6px;font-size:13.5px;}
+.placeholder{border:2px dashed var(--border);border-radius:14px;padding:18px;text-align:center;color:var(--muted);font-size:13.5px;margin-top:12px;}
+.cta{display:block;background:var(--teal);color:#fff;text-align:center;border-radius:12px;padding:14px;font-weight:800;text-decoration:none;margin-top:18px;font-size:15px;}
+footer{text-align:center;font-size:12px;color:var(--muted);margin-top:22px;padding-bottom:20px;}
+img.diagram{width:100%;border-radius:12px;border:1px solid var(--border);margin:10px 0;}
+.steps{counter-reset:step;list-style:none;padding:0;}
+.steps li{counter-increment:step;position:relative;padding-left:38px;margin-bottom:14px;font-size:14.5px;line-height:1.6;}
+.steps li::before{content:counter(step);position:absolute;left:0;top:0;width:26px;height:26px;background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="tag">Enlace Networks SAS · Guatapé</div>
+    <h1>Técnico Instalador</h1>
+    <p>Capacitación de campo: cables y materiales, equipos, fibra óptica, empalmes, infraestructura externa e instalación paso a paso. Incluye los módulos comunes (Internet desde cero y Atención al cliente) más lo específico del trabajo en terreno.</p>
+  </div>
+
+  <nav class="index">
+    <b>Contenido</b>
+    <ol>
+      <li><a href="#cables">Cables y materiales</a></li>
+      <li><a href="#equipos">Equipos: ONT, Router y Repetidor</a></li>
+      <li><a href="#fibra">Fibra óptica y potencia (dBm)</a></li>
+      <li><a href="#empalmes">Fusión y empalmes</a></li>
+      <li><a href="#infraestructura">Infraestructura externa (postes y tendido)</a></li>
+      <li><a href="#herramientas">WispHub y SmartOLT para el técnico de campo</a></li>
+      <li><a href="#instalacion">Instalación en campo, paso a paso</a></li>
+      <li><a href="#protocolo">Protocolo de atención: Bloque Azul / Bloque Verde</a></li>
+      <li><a href="#certificacion">Certificación final</a></li>
+    </ol>
+  </nav>
+
+  <section class="card" id="cables">
+    <div class="modtag">Módulo 1</div>
+    <h2>🔌 Cables y materiales</h2>
+    <p>Antes de instalar, hay que conocer qué llevas en el kit y para qué sirve cada cosa. Esto es lo básico con lo que trabaja un técnico de Enlace en campo:</p>
+    <div class="grid2">
+      <div class="box"><b>Cable de fibra (drop/acometida)</b><p>El cable delgado que sale desde la caja NAP hasta la casa del cliente. Es frágil a los dobleces muy cerrados — nunca se dobla en ángulo recto ni se pisa.</p></div>
+      <div class="box"><b>Conectores ópticos (SC/APC)</b><p>Van en las puntas del cable de fibra, conectan al ONT. Se reconocen por el color verde del conector APC. Hay que mantenerlos limpios, sin polvo ni grasa, porque ensucian la señal.</p></div>
+      <div class="box"><b>Fibra de reserva</b><p>Siempre se deja un sobrante enrollado (no muy apretado) cerca del punto de entrada, por si luego hay que reparar o mover el equipo sin tender cable nuevo.</p></div>
+      <div class="box"><b>Grapas y canaleta</b><p>Fijan el cable a la pared o al poste sin aplastarlo. La canaleta protege el cable del sol, la lluvia y golpes en tramos visibles.</p></div>
+      <div class="box"><b>Patch cord (cable de red)</b><p>El cable que conecta el ONT al router (o hace de LAN entre equipos). Se revisa que las puntas (RJ45) no estén dañadas antes de usarlo.</p></div>
+      <div class="box"><b>Power splitter / breakout</b><p>Divide un cable de fibra con varios hilos en conexiones individuales, usado en instalaciones con varias salidas o edificios.</p></div>
+    </div>
+    <div class="chuleta">
+      <b>Recuerda</b>
+      <p>La fibra es de vidrio: se parte si se dobla mucho, se ensucia si se toca el conector con los dedos, y pierde señal si se le hacen curvas muy cerradas. Trátala con cuidado en cada paso.</p>
+    </div>
+  </section>
+
+  <section class="card" id="equipos">
+    <div class="modtag">Módulo 2</div>
+    <h2>📦 Equipos: ONT, Router y Repetidor</h2>
+    <p>Quién hace qué en la casa del cliente:</p>
+    <div class="grid2">
+      <div class="box"><b>📦 ONT / ONU</b><p>Recibe la fibra y convierte los pulsos de luz en internet digital. Es la puerta de entrada a la casa del cliente. Si el ONT no tiene luz (o la luz está en rojo), no hay señal óptica llegando.</p></div>
+      <div class="box"><b>📡 Router / Wi-Fi</b><p>Reparte el internet por cable (LAN) o por el aire (Wi-Fi). Como un foco: entre más cerca, más fuerte la señal — por eso importa dónde se ubica dentro de la casa.</p></div>
+      <div class="box"><b>🔊 Repetidor</b><p>Es un megáfono: toma la señal del router y la amplifica para que llegue a habitaciones lejanas. Se usa cuando la casa es grande o tiene muchas paredes.</p></div>
+    </div>
+    <h3>Buenas prácticas al dejar el equipo instalado</h3>
+    <ul>
+      <li>Ubicar el router en un punto central y alto, no metido en un clóset o detrás de un mueble.</li>
+      <li>Probar la señal caminando por la casa con el cliente presente, y decirle con claridad hasta dónde llega bien el Wi-Fi.</li>
+      <li>Ayudar al cliente a conectar su celular y su computador antes de irse — no dejarlo con la tarea pendiente.</li>
+      <li>Confirmar que el acceso remoto al router quede activo (estándar Enlace): se debe poder entrar por la IP del cliente para soporte futuro.</li>
+    </ul>
+    <div class="placeholder">
+      📎 <b>Espacio reservado para los manuales de configuración de equipos</b><br>
+      Aquí van los manuales paso a paso de configuración del ONT y el router que Cindy agregue (marca/modelo específico, claves de fábrica, menús). Este contenido no se inventa — se completa con el material real de Enlace.
+    </div>
+  </section>
+
+  <section class="card" id="fibra">
+    <div class="modtag">Módulo 3</div>
+    <h2>✨ Fibra óptica y potencia (dBm)</h2>
+    <p><b>La fibra óptica:</b> imagina un hilo de vidrio tan fino como un cabello humano. Por dentro es como un tubo lleno de espejos: si enciendes una linterna en un extremo, la luz rebota y llega al otro lado a la velocidad de la luz. A diferencia del cobre (que transmite electricidad y le afecta la lluvia, los rayos y la distancia), la fibra transmite luz: no le afectan esas interferencias y alcanza velocidades de Gigabits.</p>
+
+    <h3>El semáforo de la luz: los dBm</h3>
+    <p>La potencia óptica mide qué tan fuerte llega la luz al equipo del cliente, en dBm — por eso casi siempre vemos números negativos: no se mide cuánta luz produce el sistema, sino cuánta queda después de viajar por la fibra. En el camino la señal pierde energía por distancia, empalmes, conectores, curvaturas e imperfecciones del cable.</p>
+    <table class="dbm-table">
+      <tr><th>Rango</th><th>Estado</th><th>Qué significa</th></tr>
+      <tr><td><span class="dot" style="background:#22a35a"></span>-18 a -25 dBm</td><td><b>🟢 Óptimo</b></td><td>Señal fuerte, llega con buena reserva.</td></tr>
+      <tr><td><span class="dot" style="background:#f2b705"></span>-25 a -27 dBm</td><td><b>🟡 Límite</b></td><td>Señal aceptable, ya va más justa — vigilar de cerca.</td></tr>
+      <tr><td><span class="dot" style="background:#d64545"></span>más de -27 dBm</td><td><b>🔴 Malo</b></td><td>Señal débil, cortes e intermitencia.</td></tr>
+      <tr><td><span class="dot" style="background:#333"></span>sin señal</td><td><b>⚫ LOS</b></td><td>Fibra cortada o desenchufada.</td></tr>
+    </table>
+    <div class="chuleta">
+      <b>Ojo</b>
+      <p>Estos rangos son de referencia — confírmalos con Jesús antes de usarlos como estándar oficial de diagnóstico, porque pueden variar según el equipo/OLT de Enlace.</p>
+    </div>
+    <p>Si la potencia es muy baja, el ONT no puede leer bien los datos: la luz llega tan débil que el equipo ya no distingue si un pulso representa un 1 o un 0, y eso provoca cortes, intermitencia o pérdida total de servicio.</p>
+  </section>
+
+  <section class="card" id="empalmes">
+    <div class="modtag">Módulo 4</div>
+    <h2>🔥 Fusión y empalmes</h2>
+    <p>Un empalme es el punto donde se unen dos extremos de fibra óptica para que la luz siga su camino sin perderse. Se hace con una máquina fusionadora, que alinea los dos hilos de vidrio y los une con calor hasta quedar como un solo cable continuo.</p>
+    <h3>Por qué importa un buen empalme</h3>
+    <ul>
+      <li>Un empalme mal alineado o sucio genera pérdida de señal (sube el dBm en negativo) incluso si todo lo demás está bien.</li>
+      <li>La fibra se corta siempre con un cortador de precisión (cleaver), nunca con tijeras o cuchillo — un corte torcido arruina el empalme.</li>
+      <li>Antes de fusionar, se limpian las puntas con alcohol isopropílico y un paño sin pelusa — cualquier polvo queda "soldado" dentro del empalme.</li>
+      <li>Después de fusionar, el empalme se protege con una manga térmica (protector de empalme) que se calienta para sellarlo.</li>
+      <li>Todo empalme queda guardado y organizado dentro de una caja de empalme (NAP o terminal), nunca suelto o expuesto a la intemperie.</li>
+    </ul>
+    <div class="chuleta">
+      <b>Recuerda</b>
+      <p>Un empalme limpio y bien hecho casi no agrega pérdida de señal. Un empalme descuidado es una de las causas más comunes de dBm alto (malo) en un cliente, aunque todo el resto de la instalación esté perfecta.</p>
+    </div>
+  </section>
+
+  <section class="card" id="infraestructura">
+    <div class="modtag">Módulo 5</div>
+    <h2>🪵 Infraestructura externa (postes y tendido)</h2>
+    <p>La red de Enlace viaja por fuera de las casas antes de llegar al cliente: postes, cajas NAP y tramos de cable tendido por la calle o el barrio.</p>
+    <h3>Buenas prácticas en campo</h3>
+    <ul>
+      <li>El cable tendido entre postes debe llevar la tensión correcta — ni muy flojo (se puede enredar o lo pueden jalar) ni muy tenso (se puede partir con el viento o la dilatación).</li>
+      <li>Se usa herraje adecuado para fijar el cable al poste, nunca alambre improvisado ni cinta.</li>
+      <li>Las cajas NAP se dejan bien cerradas y organizadas — cada hilo de fibra identificado, sin dejar empalmes sueltos ni cables "colgando" dentro de la caja.</li>
+      <li>Si el poste es compartido con otros servicios (electricidad, otro ISP), se respeta la distancia de seguridad y el orden del tendido.</li>
+      <li>Cualquier tramo dañado o expuesto se reporta — no se deja "para después", porque ahí es donde después aparecen los cortes de servicio.</li>
+    </ul>
+  </section>
+
+  <section class="card" id="herramientas">
+    <div class="modtag">Módulo 6</div>
+    <h2>🛠️ WispHub y SmartOLT para el técnico de campo</h2>
+    <p>Antes de dar cualquier diagnóstico o hacer una instalación, se consultan los sistemas en este orden:</p>
+    <div class="grid2">
+      <div class="box"><b>🗂️ WispHub (CRM)</b><p>Verifica si el cliente está Activo o Suspendido. Revisa tickets y solicitudes pendientes antes de salir a la visita.</p></div>
+      <div class="box"><b>📊 SmartOLT</b><p>Consulta el estado de la ONT y mide la potencia en dBm. Refresca la página para descartar falsos negativos antes de reportar una falla.</p></div>
+      <div class="box"><b>🗺️ OZMap / Planos</b><p>Ubica la caja NAP del sector. Ayuda a saber si una falla es de un solo cliente o de todo el barrio.</p></div>
+      <div class="box"><b>🔑 Acceso remoto</b><p>Entra al router del cliente para revisar canales Wi-Fi, clave y dispositivos conectados, sin tener que volver a la casa.</p></div>
+    </div>
+    <div class="placeholder">
+      📎 <b>Espacio reservado</b><br>
+      Aquí se pueden agregar capturas de pantalla reales de WispHub y SmartOLT (vistas desde el rol de técnico de campo) cuando Cindy las tenga listas.
+    </div>
+  </section>
+
+  <section class="card" id="instalacion">
+    <div class="modtag">Módulo 7</div>
+    <h2>🏠 Instalación en campo, paso a paso</h2>
+    <ol class="steps">
+      <li><b>Verificar en WispHub</b> que el cliente esté activo y revisar si hay alguna nota especial de la visita.</li>
+      <li><b>Ubicar el punto de entrada</b> a la vivienda junto con el cliente — explicarle por qué ese punto es el mejor (cercanía a la caja NAP, protección de la fibra).</li>
+      <li><b>Tender el cable de fibra</b> desde la caja NAP hasta el punto de entrada, dejando la reserva enrollada y usando canaleta en los tramos visibles.</li>
+      <li><b>Instalar el ONT</b>, conectar la fibra y verificar en SmartOLT que la potencia óptica esté en rango óptimo (🟢).</li>
+      <li><b>Conectar el router</b> al ONT, encenderlo y confirmar que reparte señal correctamente.</li>
+      <li><b>Caminar la casa con el cliente</b> probando el Wi-Fi, y decirle con claridad hasta dónde llega bien la señal — si hace falta un repetidor, explicárselo ahí mismo.</li>
+      <li><b>Ayudar a conectar sus dispositivos</b>: celular, computador, Smart TV — no dejar al cliente con esa tarea pendiente.</li>
+      <li><b>Confirmar acceso remoto activo</b> en el router (estándar Enlace) y dejar la credencial PPPoE con el nombre del cliente + serial del equipo, como corresponde.</li>
+      <li><b>Explicarle al cliente</b> en palabras simples qué quedó instalado, y dejarle un contacto claro por si algo falla.</li>
+    </ol>
+  </section>
+
+  <section class="card" id="protocolo">
+    <div class="modtag">Módulo 8</div>
+    <h2>🎓 Protocolo de atención: dos bloques</h2>
+    <p>Cuando se reporta o se resuelve algo con un cliente, la respuesta siempre se piensa en dos bloques separados:</p>
+    <div class="bloque azul">
+      <b>🔵 Bloque Azul — solo para ti</b>
+      <p>Diagnóstico técnico: qué revisaste en los sistemas (WispHub, SmartOLT, dBm, OZMap) y qué acción tomaste o vas a tomar. Es información interna, no se le manda al cliente así.</p>
+    </div>
+    <div class="bloque verde">
+      <b>🟢 Bloque Verde — para el cliente</b>
+      <p>Mensaje amable, con analogías simples y tono empático, listo para copiar y pegar en LiveConnect. Sin tecnicismos ni números de dBm — se traduce todo a algo que el cliente entienda.</p>
+    </div>
+    <div class="chuleta">
+      <b>Ejemplo</b>
+      <p><u>Azul:</u> "ONT en -29 dBm, revisar empalme en NAP del sector, posible pérdida por suciedad." · <u>Verde:</u> "Hola, notamos que la señal de tu conexión está llegando más débil de lo normal, probablemente por un punto en el cableado externo — ya estamos revisando y te confirmamos apenas quede solucionado. 🙌"</p>
+    </div>
+  </section>
+
+  <section class="card" id="certificacion">
+    <div class="modtag">Módulo 9</div>
+    <h2>🏆 Certificación final</h2>
+    <p>Para certificarte como Técnico Instalador, además de los módulos comunes (Internet desde cero y Atención al cliente), presenta el examen técnico de instalación: cables, equipos, fibra, empalmes, infraestructura y el protocolo de los dos bloques.</p>
+    <a class="cta" href="examen-instalador.html">Ir al examen de Técnico Instalador →</a>
+  </section>
+
+  <footer>Enlace Networks SAS · Capacitación técnica interna · Guatapé, Antioquia</footer>
+</div>
+</body>
+</html>
