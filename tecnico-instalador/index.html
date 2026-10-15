@@ -57,7 +57,7 @@ img.diagram{width:100%;border-radius:12px;border:1px solid var(--border);margin:
   <div class="hero">
     <div class="tag">Enlace Networks SAS · Guatapé</div>
     <h1>Técnico Instalador</h1>
-    <p>Capacitación de campo: cables y materiales, equipos, fibra óptica, empalmes, infraestructura externa e instalación paso a paso. Incluye los módulos comunes (Internet desde cero y Atención al cliente) más lo específico del trabajo en terreno.</p>
+    <p>Capacitación de campo: cables y materiales, equipos, fibra óptica, empalmes, infraestructura externa (splitter y NAP), una simulación real de instalación y el protocolo de atención — más una Parte B dedicada a la instalación de TV (KTV). Incluye los módulos comunes (Internet desde cero y Atención al cliente) más lo específico del trabajo en terreno.</p>
   </div>
 
   <nav class="index">
@@ -67,10 +67,12 @@ img.diagram{width:100%;border-radius:12px;border:1px solid var(--border);margin:
       <li><a href="#equipos">Equipos: ONT, Router y Repetidor</a></li>
       <li><a href="#fibra">Fibra óptica y potencia (dBm)</a></li>
       <li><a href="#empalmes">Fusión y empalmes</a></li>
-      <li><a href="#infraestructura">Infraestructura externa (postes y tendido)</a></li>
+      <li><a href="#infraestructura">Infraestructura externa (postes, splitter y NAP)</a></li>
       <li><a href="#herramientas">WispHub y SmartOLT para el técnico de campo</a></li>
       <li><a href="#instalacion">Instalación en campo, paso a paso</a></li>
+      <li><a href="#simulacion">Simulación de una visita real</a></li>
       <li><a href="#protocolo">Protocolo de atención: Bloque Azul / Bloque Verde</a></li>
+      <li><a href="#ktv">Parte B · Instalación de TV (KTV)</a></li>
       <li><a href="#certificacion">Certificación final</a></li>
     </ol>
   </nav>
@@ -156,16 +158,31 @@ img.diagram{width:100%;border-radius:12px;border:1px solid var(--border);margin:
 
   <section class="card" id="infraestructura">
     <div class="modtag">Módulo 5</div>
-    <h2>🪵 Infraestructura externa (postes y tendido)</h2>
-    <p>La red de Enlace viaja por fuera de las casas antes de llegar al cliente: postes, cajas NAP y tramos de cable tendido por la calle o el barrio.</p>
+    <h2>🪵 Infraestructura externa (postes, splitter y NAP)</h2>
+    <p>La red de Enlace viaja por fuera de las casas antes de llegar al cliente: postes, splitters ópticos, cajas NAP y tramos de cable tendido por la calle o el barrio. Un técnico instalador interno no necesita operar esta parte todos los días, pero sí debe entender cómo está armada — porque ahí es donde casi siempre se esconde el problema cuando algo no cuadra adentro de la casa.</p>
+
+    <h3>El camino completo de la señal, desde el poste hasta el cliente</h3>
+    <ol class="steps">
+      <li><b>Troncal:</b> un cable de fibra "grueso" (varios hilos) sale del Data Center y viaja por los postes principales del barrio.</li>
+      <li><b>Splitter óptico (divisor pasivo):</b> dentro de una caja NAP, un splitter toma un solo hilo de fibra y lo reparte entre varios clientes (típicamente 1:8, 1:16 o 1:32 — uno entra, varios salen). No necesita electricidad, es puramente óptico.</li>
+      <li><b>Pérdida por cada división:</b> cada vez que la señal pasa por un splitter pierde potencia (sube el dBm en negativo). Por eso un cliente que está "muy repartido" en la red puede llegar con un dBm más alto que uno con conexión más directa, aunque ambos estén bien instalados.</li>
+      <li><b>Caja NAP de barrio/secundaria:</b> es donde terminan las salidas del splitter — cada puerto ya es la fibra individual de un cliente, lista para tenderse hasta su casa.</li>
+      <li><b>Drop / acometida:</b> el cable delgado que sale de la NAP hasta el punto de entrada de la vivienda (este es el que trabaja el técnico instalador todos los días).</li>
+    </ol>
+
     <h3>Buenas prácticas en campo</h3>
     <ul>
       <li>El cable tendido entre postes debe llevar la tensión correcta — ni muy flojo (se puede enredar o lo pueden jalar) ni muy tenso (se puede partir con el viento o la dilatación).</li>
       <li>Se usa herraje adecuado para fijar el cable al poste, nunca alambre improvisado ni cinta.</li>
       <li>Las cajas NAP se dejan bien cerradas y organizadas — cada hilo de fibra identificado, sin dejar empalmes sueltos ni cables "colgando" dentro de la caja.</li>
+      <li>Las salidas del splitter que no se estén usando se dejan tapadas (protector contra polvo), nunca abiertas dentro de la caja.</li>
       <li>Si el poste es compartido con otros servicios (electricidad, otro ISP), se respeta la distancia de seguridad y el orden del tendido.</li>
       <li>Cualquier tramo dañado o expuesto se reporta — no se deja "para después", porque ahí es donde después aparecen los cortes de servicio.</li>
     </ul>
+    <div class="chuleta">
+      <b>Por qué le importa esto a un técnico interno</b>
+      <p>Si un cliente tiene dBm malo y en la casa todo está perfecto (ONT bien conectado, sin curvas cerradas, conector limpio), el problema probablemente está más atrás: en el splitter o en la caja NAP del sector. Saber esto evita perder tiempo revisando una y otra vez lo mismo dentro de la casa.</p>
+    </div>
   </section>
 
   <section class="card" id="herramientas">
@@ -200,6 +217,41 @@ img.diagram{width:100%;border-radius:12px;border:1px solid var(--border);margin:
     </ol>
   </section>
 
+  <section class="card" id="simulacion">
+    <div class="modtag">Módulo 7.1 · Dramatización</div>
+    <h2>🎬 Simulación: la visita de Andrés</h2>
+    <p>Esto no es teoría — es la misma instalación del Módulo 7, pero contada como una visita real, con los movimientos y las mediciones que Andrés (técnico de Enlace) va tomando en cada parada. Léela pensando "¿qué haría yo en este punto?".</p>
+
+    <div class="box" style="margin-top:14px;">
+      <b>📍 Parada 1 — Llegada a la casa</b>
+      <p>Andrés llega a la casa de la señora Luz. Antes de tocar nada, abre WispHub en el celular: cliente Activo, sin tickets pendientes. Revisa con la señora Luz dónde quiere el router y dónde está la caja NAP más cercana (la vio al entrar, en el poste de la esquina).</p>
+    </div>
+    <div class="box">
+      <b>📍 Parada 2 — Escoger el punto de entrada</b>
+      <p>Andrés mide con la vista la distancia entre la NAP y la pared de la casa: unos 25 metros. Elige un punto de entrada que (1) esté cerca de la NAP, (2) no obligue al cable a dar vueltas cerradas en una esquina del techo, y (3) quede protegido del sol y la lluvia. Le explica a la señora Luz por qué eligió ahí — no por decoración, sino para que el cable dure y no se dañe.</p>
+    </div>
+    <div class="box">
+      <b>📍 Parada 3 — Tender el cable</b>
+      <p>Tiende el drop desde la NAP hasta el punto de entrada, dejando un rollo de reserva de fibra (ni muy apretado, para no forzar el vidrio) cerca del ONT. Usa canaleta en el tramo que queda visible sobre la pared exterior. En el poste, fija el cable con el herraje correcto — nada de alambre improvisado.</p>
+    </div>
+    <div class="box">
+      <b>📍 Parada 4 — Primera medición</b>
+      <p>Conecta el ONT y abre SmartOLT: la potencia óptica marca <b>-21 dBm</b> → zona 🟢 óptima. Si hubiera marcado algo como -29 dBm (🔴), antes de seguir, Andrés revisaría: ¿el conector está limpio?, ¿hay alguna curva muy cerrada en el cable?, ¿el empalme más cercano en la NAP se ve bien? — nunca se instala "a ciegas" sin mirar el número.</p>
+    </div>
+    <div class="box">
+      <b>📍 Parada 5 — Router y prueba con el cliente</b>
+      <p>Conecta el router, lo ubica en un punto alto y central (no detrás del televisor, como quería la señora Luz al principio — Andrés le explica por qué ahí el Wi-Fi llegaría peor a las habitaciones). Camina la casa con ella probando el Wi-Fi habitación por habitación, y le dice con claridad hasta dónde llega bien la señal.</p>
+    </div>
+    <div class="box">
+      <b>📍 Parada 6 — Cierre</b>
+      <p>Ayuda a conectar el celular y el Smart TV de la señora Luz. Deja el acceso remoto activo en el router y la credencial PPPoE con su nombre + el serial del equipo. Antes de irse, le explica en palabras simples qué quedó instalado y le deja un número de contacto por si algo falla.</p>
+    </div>
+    <div class="chuleta">
+      <b>El hilo que conecta toda la visita</b>
+      <p>Cada parada tiene una decisión técnica detrás (dónde entra el cable, qué tan protegido queda, qué dice el dBm) y una decisión de atención al cliente (explicarle, mostrarle, dejarlo informado). Las dos van siempre juntas — una instalación técnicamente perfecta pero donde el cliente queda confundido no está realmente terminada.</p>
+    </div>
+  </section>
+
   <section class="card" id="protocolo">
     <div class="modtag">Módulo 8</div>
     <h2>🎓 Protocolo de atención: dos bloques</h2>
@@ -218,10 +270,37 @@ img.diagram{width:100%;border-radius:12px;border:1px solid var(--border);margin:
     </div>
   </section>
 
+  <section class="card" id="ktv" style="border-top:4px solid var(--gold);">
+    <div class="modtag">Parte B · Módulo 9</div>
+    <h2>📺 Instalación de TV (KTV)</h2>
+    <p>Enlace también instala el servicio de televisión por cable (KTV). Es un trabajo distinto al de internet — otro tipo de cable, otros conectores y otra forma de medir la señal — así que se trata como una segunda parte de la capacitación, aunque la haga el mismo técnico.</p>
+
+    <h3>Lo básico del cable coaxial</h3>
+    <div class="grid2">
+      <div class="box"><b>🔗 Cable coaxial (RG6)</b><p>El cable "grueso" que lleva la señal de TV: un hilo de cobre en el centro, rodeado de una malla metálica que lo protege de interferencias. No se confunde con el cable de fibra ni con el patch cord de red — es un cable distinto, para un servicio distinto.</p></div>
+      <div class="box"><b>🔌 Conectores tipo F</b><p>Van en las puntas del coaxial, se enroscan (no se "clican" como el RJ45). Deben quedar bien ajustados — un conector flojo o mal puesto es una de las causas más comunes de "nieve" o mala imagen en el televisor.</p></div>
+      <div class="box"><b>🔀 Splitter de TV (divisor de RF)</b><p>Reparte la señal de un solo cable entrante entre varios televisores de la casa. Cada salida adicional del splitter resta señal — por eso no se abusa de splitters en cadena (uno detrás de otro) si se puede evitar.</p></div>
+      <div class="box"><b>🧢 Tapón de 75 ohmios</b><p>Se pone en cualquier salida del splitter que no se esté usando. Dejarla "abierta" sin tapón genera reflejos de señal que afectan a los televisores que sí están conectados.</p></div>
+    </div>
+
+    <h3>Qué revisar al instalar o dar soporte de TV</h3>
+    <ul>
+      <li>El punto de entrada del cable de TV se escoge con el mismo criterio que el de internet: cerca de la red externa, protegido, sin curvas forzadas.</li>
+      <li>Si hay varios televisores, se cuenta cuántas salidas se necesitan antes de elegir el splitter (2, 3 o 4 salidas) — no se improvisa con splitters adicionales conectados en cadena si no es necesario.</li>
+      <li>Se revisa la imagen en cada televisor conectado, no solo en el primero — un splitter mal elegido puede dejar bien el televisor más cercano y con "nieve" el más lejano.</li>
+      <li>Si el servicio usa decodificador (set-top box), se confirma que quede encendido, emparejado y mostrando canal antes de irse — igual que se hace con el router de internet.</li>
+      <li>Se le explica al cliente qué canal usar para ver cada señal si hay varios decodificadores o entradas en el televisor.</li>
+    </ul>
+    <div class="placeholder">
+      📎 <b>Espacio reservado para el estándar exacto de Enlace en TV</b><br>
+      Este módulo cubre los fundamentos generales de instalación de TV por cable (coaxial, splitter, conectores). Falta que Cindy o Jesús confirmen el detalle propio de Enlace: si el servicio llega como señal de cable clásica o mediante decodificador, qué marca/modelo de decodificador se usa, y si hay algún valor de referencia de señal (dBmV) que el técnico deba revisar. No se inventa ese detalle — se completa cuando esté disponible.
+    </div>
+  </section>
+
   <section class="card" id="certificacion">
-    <div class="modtag">Módulo 9</div>
+    <div class="modtag">Módulo 10</div>
     <h2>🏆 Certificación final</h2>
-    <p>Para certificarte como Técnico Instalador, además de los módulos comunes (Internet desde cero y Atención al cliente), presenta el examen técnico de instalación: cables, equipos, fibra, empalmes, infraestructura y el protocolo de los dos bloques.</p>
+    <p>Para certificarte como Técnico Instalador, además de los módulos comunes (Internet desde cero y Atención al cliente), presenta el examen técnico de instalación: cables, equipos, fibra, empalmes, infraestructura externa, instalación paso a paso, el protocolo de los dos bloques y la instalación de TV (KTV).</p>
     <a class="cta" href="examen-instalador.html">Ir al examen de Técnico Instalador →</a>
   </section>
 
